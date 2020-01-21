@@ -1,14 +1,54 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!--
-To change this license header, choose License Headers in Project Properties.
-To change this template file, choose Tools | Templates
-and open the template in the editor.
--->
-<!DOCTYPE html>
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://xmlns.jcp.org/jsf/html">
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core">
     <ui:composition template="/WEB-INF/include/dashboard.xhtml">
-        
+        <ui:define name="container">
+            <div class="col-xs-12">
+                <div class="card">
+                    <ul class="list-group list-group-flush">
+                        <li class="list-group-item">
+                            <form>
+                                <div class="form-row align-items-center">
+                                    <div class="col-md-8">
+                                        <label class="sr-only" for="inlineFormInput">Pesquisar</label>
+                                        <input type="text" class="form-control mb-2" id="inlineFormInput" placeholder="Pesquisar..."/>
+                                    </div>
+                                    <div class="col-auto">
+                                        <button type="submit" class="btn btn-primary mb-2">Submit</button>
+                                    </div>
+                                </div>
+                            </form>
+                        </li>
+                        <li class="list-group-item">
+                            <h:dataTable value="#{dataMB.list}" var="o" styleClass="table table-bordered">
+                                <h:column>
+                                    <!-- column header -->
+                                    <f:facet name="header">#</f:facet>
+                                    <!-- row record -->
+                                    #{o.index}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">First</f:facet>
+                                        #{o.firstName}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Last</f:facet>
+                                        #{o.lastName}
+                                </h:column>
+
+                                <h:column>
+                                    <f:facet name="header">Handle</f:facet>
+                                        #{o.handle}
+                                </h:column>
+                            </h:dataTable>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </ui:define>
     </ui:composition>
 </html>
